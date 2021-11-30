@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" name="" id="" value="get" @click='get'>
+        <input type="button" name="" id="" value="post" @click='post'>
+        <div>{{joke}}</div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                joke: '笑话'
+            },
+            methods: {
+                get() {
+                    //axios中this指向会改变，先储存起来
+                    var that = this
+                    axios.get("https://autumnfish.cn/api/joke").then(function(response) {
+                        console.log(response)
+                        console.log(response.data)
+                        that.joke = response.data
+                    }, function(err) {
+                        console.log(err)
+                    })
+                },
+                post() {
+                    axios.post("https://autumnfish.cn/api/user/reg", {
+                        username: "油炸蒲公英"
+                    }).then(function(response) {
+                        console.log(response)
+                    }, function(err) {
+                        console.log(err)
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

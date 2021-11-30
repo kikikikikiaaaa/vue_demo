@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h2>进行一个天气的查</h2>
+        </header>
+        <nav>
+            <input type="text" placeholder="请输入城市" @keyup.enter='search' v-model='city'>
+            <label for="" id='btn' @click='search'>查询</label>
+        </nav>
+        <ul>
+            <li class='hotkeys' v-for='(city,index) in citys' @click='shortcut(index)'>{{city}}</li>
+        </ul>
+        <section>
+            <li class='weather_list' v-for='item in weather'>
+                <div class="type">{{item.type}}</div>
+                <div class="temp">
+                    <span>{{item.high}}</span>~<span>{{item.low}}</span>
+                </div>
+                <div class="date">{{item.date}}</div>
+            </li>
+        </section>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                city: '',
+                citys: ['广州', '北京', '上海', '深圳'],
+                weather: []
+            },
+            methods: {
+                search() {
+                    var that = this
+                    axios.get('http://wthrcdn.etouch.cn/weather_mini?city=' + this.city).then(response => {
+                        that.weather = response.data.data.forecast
+                        console.log(that.weather)
+                    }).catch(err => {
+                        console.log(err)
+                    })
+                },
+                shortcut(index) {
+                    this.city = this.citys[index]
+                    this.search()
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

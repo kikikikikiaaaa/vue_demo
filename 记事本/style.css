@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    background: none;
+    outline: none;
+    border: none;
+}
+
+body {
+    background-color: cadetblue;
+}
+
+#app {
+    padding-top: 10px;
+    margin: 80px auto;
+    width: 400px;
+    background-color: cornsilk;
+    border: 1px solid rgb(2, 69, 71);
+    border-radius: 10px;
+}
+
+div {
+    position: relative;
+}
+
+h2 {
+    text-align: center;
+}
+
+header {
+    margin-top: 20px;
+    position: relative;
+}
+
+input {
+    padding-left: 10px;
+    height: 35px;
+    width: 100%;
+    font-size: 20px;
+    font-style: italic;
+    border-bottom: 1px solid cadetblue;
+}
+
+li {
+    position: relative;
+    height: 35px;
+    font-size: 20px;
+    line-height: 35px;
+    border-bottom: 1px solid cadetblue;
+}
+
+span {
+    padding-left: 5px;
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    font-size: 14px;
+}
+
+label {
+    margin-left: 20px;
+}
+
+#add {
+    top: 5px;
+    right: 5px;
+}
+
+#remove {
+    right: 5px;
+}
+
+footer {
+    position: relative;
+    top: 25px;
+    background-color: red;
+}
+
+#count {
+    left: 5px;
+}
+
+#clear {
+    right: 5px;
+}
+
+
+/* #clear,
+#add,
+#remove {
+    text-align: center;
+    width: 40px;
+}
+
+#clear:hover,
+#add:hover,
+#remove:hover {
+    background-color: cadetblue;
+    object-fit: 0.5;
+} */

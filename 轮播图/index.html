@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            border: 0;
+            padding: 0;
+        }
+        
+        div {
+            position: relative;
+            margin: 50px auto;
+            width: 400px;
+            height: 500px;
+            background-color: aquamarine;
+            object-fit: cover
+        }
+        
+        img {
+            object-fit: cover;
+            width: 400px;
+            height: 500px;
+        }
+        
+        span {
+            position: absolute;
+            top: 225px;
+            width: 30px;
+            height: 50px;
+            background-color: cadetblue;
+            opacity: 0.5;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <span class="left" @click='pre' v-show='index!=0'>&lt;</span>
+        <img :src="imgArr[index]" alt="" @mouseover='cleartime'>
+        <span class="right" @click='next' v-show='index!=(imgArr.length-1)'>&gt;</span>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                imgArr: ["./img/ib05.jpg", './img/img_02.jpg', './img/img_04.jpg', './img/top_14.png', './img/mary_1231.jpg', './img/moon.jpg', './img/top_1.jpg', './img/top_2nd.jpg'],
+                index: 0,
+                timer: null
+            },
+            methods: {
+                pre() {
+                    this.index--;
+                },
+                next() {
+                    this.index++;
+                },
+                cleartime() {
+                    clearInterval(this.timer);
+                }
+            },
+            // change() {
+            //     this.timer = setInterval(() => {
+            //         if (this.index == 7) {
+            //             this.index = 0
+            //         } else {
+            //             this.index++
+            //         }
+            //     }, 2000)
+            // },
+        })
+    </script>
+</body>
+
+</html>

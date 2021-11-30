@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    background: none;
+    outline: none;
+    border: none;
+}
+
+body {
+    background-color: cadetblue;
+}
+
+#app {
+    width: 640px;
+    margin: 80px auto;
+    text-align: center;
+}
+
+nav {
+    height: 35px;
+    width: 400px;
+    margin: 30px auto 0 auto;
+    position: relative;
+    background-color: cornsilk;
+    line-height: 35px;
+    font-size: 16px;
+}
+
+input {
+    position: absolute;
+    padding-left: 5px;
+    height: 35px;
+    left: 0;
+    width: 100%;
+}
+
+#btn {
+    position: absolute;
+    right: 0;
+    width: 80px;
+    text-align: center;
+    background-color: darkcyan;
+}
+
+ul {
+    text-align: left;
+    width: 400px;
+    margin: 0 auto;
+}
+
+.hotkeys {
+    display: inline-block;
+    margin: 5px;
+    font-size: 12px;
+}
+
+.hotkeys:hover {
+    color: cornsilk;
+}
+
+section {
+    display: flex;
+    height: 120px;
+    margin-top: 30px;
+}
+
+.weather_list {
+    flex: 1;
+    display: inline-block;
+    text-align: center;
+    border-left: .5px solid darkcyan;
+    background-color: cornsilk;
+}
+
+.weather_list:first-child {
+    border: 0;
+}
+
+.type {
+    font-size: 25px;
+    margin-top: 10px;
+    color: orange;
+}
+
+.temp {
+    margin: 15px 0;
+    font-size: 12px;
+    color: palevioletred;
+}
+
+.date {
+    font-size: 12px;
+    color: darkgrey;
+}

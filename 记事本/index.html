@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <h2>记事本</h2>
+        <header>
+            <!-- v-model使用不熟悉 -->
+            <input type="text" placeholder="请输入任务" @keyup.enter='add' v-model='inputvalue'>
+            <span id="add" @click='add'>+</span>
+        </header>
+        <section>
+            <ul>
+                <li v-for='(item,index) in items'>
+                    <span>{{index+1}}.</span>
+                    <label>{{item}}</label>
+                    <span id="remove" @click='remove(index)'>-</span>
+                </li>
+            </ul>
+        </section>
+        <footer v-if='index'>
+            <span id="counter">{{index}}  items</span>
+            <span id='clear' @click='clear'>clear</span>
+        </footer>
+    </div>
+    <script src='../js/vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                items: [],
+                inputvalue: '',
+                index: 0
+            },
+            methods: {
+                add() {
+                    if (this.inputvalue == '') {
+                        alert('任务是什么呢')
+                    } else {
+                        this.items.push(this.inputvalue)
+                        this.index++;
+                        this.inputvalue = ''
+                    }
+                },
+                remove(index) {
+                    this.items.splice(index, 1)
+                    this.index--
+                },
+                clear() {
+                    this.items = []
+                    this.index = 0
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
