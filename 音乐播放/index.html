@@ -6,19 +6,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div id="app">
+        <div id='musicplayer' v-if='!mvplay'>
+            <header>
+                <span id="title">听听</span>
+                <div id="search">
+                    <input type="text" placeholder="请输入内容" v-model='query' @keyup.enter='search'>
+                    <button id="search_icon" @click='search'></button>
+                </div>
+            </header>
+            <section>
+                <div id="music_list">
+                    <li class='music' v-for="music in music_list">
+                        <span class="play_icon" @click='musicplay(music.id)'></span>
+                        <span class="musicname" @click='musicplay(music.id)'>{{music.name}}</span>
+                        <span class="mv_icon" @click='mv_play(music.mvid)' v-if='music.mvid'></span>
+                    </li>
+                </div>
 
+                <div id="main">
+                    <img id='player_bar' src="./img/player_bar.png" alt="">
+                    <img id='cover' src="./img/cover.png" alt="">
+                    <img id='disc' src="./img/disc.png" alt="">
+                </div>
+                <div id="comment">
+                    <b>热门留言</b>
+                    <li class='comment' v-for='comment in hotComments'>
+                        <img class='userimg' :src="comment.user.avatarUrl" alt="">
+                        <b class="userid">{{comment.user.nickname}}</b>
+                        <div class="content">{{comment.content}}</div>
+                        <div class="date">{{comment.timeStr}}</div>
+                    </li>
+                </div>
+            </section>
+            <footer>
+                <audio id='myaudio' :src="musicUrl" controls='controls' autoplay='autoplay' @play='play' @pause='pause'></audio>
+            </footer>
+        </div>
+        <div id="mv" v-if='mvplay' @click='close'>
+            <video id='mvcontent' :src="mvurl" autoplay='autoplay' controls='controls' @click.stop='clickmv'></video>
+        </div>
     </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="../js/vue.js"></script>
-    <script>
-        const app = new Vue({
-            el: '#app',
-            data: {}
-        })
-    </script>
+    <script src="./main.js"></script>
 </body>
 
 </html>
